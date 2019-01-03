@@ -90,6 +90,7 @@
     module: "{{ ansible_pkg_mgr }}"
     name: "{{ item }}"
     state: latest
+  become_flags: -H -S -n -i  
   register: pkgs_task_result
   until: pkgs_task_result is succeeded
   retries: 4
