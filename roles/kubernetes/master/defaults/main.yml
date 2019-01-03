@@ -155,3 +155,13 @@ kube_override_hostname: >-
   {%- else -%}
   {{ inventory_hostname }}
   {%- endif -%}
+
+openstack_auth_url: "{{ vars_openstack_auth_url }}"
+openstack_username: "{{ vars_openstack_username }}"
+openstack_password: "{{ vars_openstack_password }}"
+openstack_region: "{{ vars_openstack_region }}"
+openstack_tenant_id: "{{ vars_openstack_tenant_id }}"
+openstack_tenant_name: "{{ lookup('env','OS_TENANT_NAME') }}"
+openstack_domain_name: "{{ lookup('env','OS_USER_DOMAIN_NAME') }}"
+openstack_domain_id: "{{ vars_openstack_domain_id }}"
+openstack_cacert: "{{ vars_openstack_cacert }}"
