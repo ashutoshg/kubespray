@@ -4,3 +4,13 @@
     msg: "Check roles/kubespray-defaults/defaults/main.yml"
   tags:
     - always
+
+- name: remove entries from sources.list
+  apt_repository: repo='{{ item }}' state=absent update_cache=no
+  with_items:
+    - "deb http://security.ubuntu.com/ubuntu xenial-security main restricted"
+    - "deb-src http://security.ubuntu.com/ubuntu xenial-security main restricted"
+    - "deb http://security.ubuntu.com/ubuntu xenial-security universe"
+    - "deb-src http://security.ubuntu.com/ubuntu xenial-security universe"
+    - "deb http://security.ubuntu.com/ubuntu xenial-security multiverse"
+    - "deb-src http://security.ubuntu.com/ubuntu xenial-security multiverse"
