@@ -21,7 +21,7 @@
 
 - name: Bootstrap | Install python 2.x and pip
   raw:
-    apt-get update && \
+    apt-get update || true && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y {{ubuntu_packages | join(" ")}}
   environment: {}
   when:
