@@ -5,7 +5,7 @@ preferences: {}
 clusters:
 - cluster:
     certificate-authority-data: {{ admin_certs.results[0]['content'] }}
-    server: {{ kube_apiserver_endpoint }}
+    server: {{ external_apiserver_endpoint }}
   name: {{ cluster_name }}
 contexts:
 - context:
