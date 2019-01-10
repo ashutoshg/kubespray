@@ -33,6 +33,13 @@
   run_once: yes
   when: kubeconfig_localhost|default(false)
 
+- name: Update exported kubeconfig file under artifacts dir with external_apiserver_endpoint
+  shell: sed -i 's#server:.*#server:\ {{ external_apiserver_endpoint }}#g' {{ artifacts_dir }}/admin.conf
+  when: kubeconfig_localhost|default(false)
+  become: no
+  run_once: yes
+  delegate_to: localhost
+
 - name: Copy kubectl binary to ansible host
   fetch:
     src: "{{ bin_dir }}/kubectl"
