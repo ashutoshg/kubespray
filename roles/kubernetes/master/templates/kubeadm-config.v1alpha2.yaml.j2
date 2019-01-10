@@ -5,7 +5,7 @@ api:
   controlPlaneEndpoint: {{ kubeadm_config_api_fqdn }}
   bindPort: {{ loadbalancer_apiserver.port | default(kube_apiserver_port) }}
 {% else %}
-  advertiseAddress: {{ kube_apiserver_access_address }}
+  advertiseAddress: {{ ip | default(ansible_default_ipv4.address) }}
   bindPort: {{ kube_apiserver_port }}
 {% endif %}
 etcd:
