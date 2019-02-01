@@ -35,6 +35,13 @@
 #    state: present
 #  when: https_proxy is defined
 
+- name: disable a timer for apt-daily.service
+  raw: systemctl stop apt-daily.service
+
+- name: Kill apt-daily.service
+  raw: systemctl kill --kill-who=all apt-daily.service
+  ignore_errors: yes
+
 - name: Check http::proxy in /etc/apt/apt.conf
   raw: grep -qsi 'Acquire::http::Proxy' /etc/apt/apt.conf
   register: need_http_proxy

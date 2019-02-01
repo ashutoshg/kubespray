@@ -111,6 +111,7 @@
   any_errors_fatal: "{{ any_errors_fatal | default(true) }}"
   roles:
     - { role: kubespray-defaults}
+    - { role: enable-os-services}
     - { role: dnsmasq, when: "dns_mode == 'dnsmasq_kubedns'", tags: dnsmasq }
     - { role: kubernetes/preinstall, when: "dns_mode != 'none' and resolvconf_mode == 'host_resolvconf'", tags: resolvconf, dns_late: true }
   environment: "{{proxy_env}}"

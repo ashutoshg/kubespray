@@ -1,0 +1,6 @@
+---
+- name: enable a timer for apt-daily.service
+  systemd:
+    name: apt-daily.service
+    state: started
+    enabled: yes
