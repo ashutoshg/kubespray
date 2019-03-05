@@ -65,8 +65,8 @@
   run_once: yes
   when: kubeconfig_localhost|default(false)
 
-- name: Update exported kubeconfig file under artifacts dir with external_apiserver_endpoint
-  shell: sed -i 's#server:.*#server:\ {{ external_apiserver_endpoint }}#g' {{ artifacts_dir }}/admin.conf
+- name: Update exported kubeconfig file under artifacts dir with external_apiserver_address
+  shell: sed -i 's#server:.*#server:\ {{ external_apiserver_address }}#g' {{ artifacts_dir }}/admin.conf
   when: kubeconfig_localhost|default(false)
   become: no
   run_once: yes
