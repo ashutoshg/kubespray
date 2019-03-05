@@ -14,7 +14,7 @@
       {{ kube_apiserver_port }}
       {%- endif -%}
   tags:
-    - facts
+  - facts
 
 - name: Create kube config dir
   file:
@@ -64,13 +64,6 @@
   become: no
   run_once: yes
   when: kubeconfig_localhost|default(false)
-
-- name: Update exported kubeconfig file under artifacts dir with external_apiserver_address
-  shell: sed -i 's#server:.*#server:\ {{ external_apiserver_address }}#g' {{ artifacts_dir }}/admin.conf
-  when: kubeconfig_localhost|default(false)
-  become: no
-  run_once: yes
-  delegate_to: localhost
 
 - name: Copy kubectl binary to ansible host
   fetch:
